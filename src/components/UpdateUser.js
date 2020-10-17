@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import Input from "./Input"
-import {getUserById,putUser} from "../api/UserService"
+import {getUserById,updateUser} from "../api/UserService"
 
 export default class UpdateUser extends Component {
 
@@ -34,7 +34,7 @@ export default class UpdateUser extends Component {
     updateUser = (e) => {
         e.preventDefault(); 
         let user = {userName: this.state.userName, userSurname: this.state.userSurname, userEmail: this.state.userEmail}
-       putUser(user,this.state.id).then(response =>
+       updateUser(user,this.state.id).then(response =>
             this.props.history.push("/")
         )
       

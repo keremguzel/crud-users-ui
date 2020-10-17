@@ -14,7 +14,7 @@ export const getUserById = (id) => {
     return axios.get(API_URL+"/"+id)
 }
 
-export const putUser = (body,id) => {
+export const updateUser = (body,id) => {
     return axios.put(API_URL +"/"+id,body)
 } 
 

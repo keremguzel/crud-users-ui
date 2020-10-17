@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import {getUsers,deleteUser} from '../api/UserService'
 
-
 export default class ListUsers extends Component {
 
     state = {
@@ -17,7 +16,7 @@ export default class ListUsers extends Component {
         })
     }
 
-    editUser = (id) => {
+    updateUser = (id) => {
         this.props.history.push(`/edit-user/${id}`)
     }
 
@@ -33,31 +32,29 @@ export default class ListUsers extends Component {
         return (
             <div>
                 <table className="ui inverted blue table">
-                    <thead>
-                        <tr>
-                            <th style={{textAlign:"center"}}>Name</th>
-                            <th style={{textAlign:"center"}}>Surname</th>
-                            <th style={{textAlign:"center"}}>E-mail</th>
-                            <th style={{textAlign:"center"}}>Action</th>
+            <thead>
+                <tr>
+                    <th style={{textAlign:"center"}}>Name</th>
+                    <th style={{textAlign:"center"}}>Surname</th>
+                    <th style={{textAlign:"center"}}>E-mail</th>
+                    <th style={{textAlign:"center"}}>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                    
+                    {this.state.users.map(users => 
+                     <tr key={users.userId}>
+                            <td style={{textAlign:"center"}}>{users.userName}</td>
+                            <td style={{textAlign:"center"}}>{users.userSurname}</td>
+                            <td style={{textAlign:"center"}}>{users.userEmail}</td>
+                            <div className="buttons">
+                                <button className="ui inverted blue button" onClick={() => this.updateUser(users.userId)}>Edit</button>
+                                <button className="ui inverted red button" onClick={() => this.deleteUser(users.userId)}>Delete</button>
+                            </div>
                         </tr>
-                    </thead>
-                    <tbody>
-                            
-                             {this.state.users.map(u =>
-                                <tr key={u.userId}>
-                                    <td style={{textAlign:"center"}}>{u.userName}</td>
-                                    <td style={{textAlign:"center"}}>{u.userSurname}</td>
-                                    <td style={{textAlign:"center"}}>{u.userEmail}</td>
-                                    <div className="buttons">
-                                        <button class="ui inverted blue button" onClick={() => this.editUser(u.userId)}>Edit</button>
-                                        <button class="ui inverted red button" onClick={() => this.deleteUser(u.userId)}>Delete</button>
-                                    </div>
-                                </tr>
-                            )}
-
-                    </tbody>
+                    )}
+                </tbody>
                 </table>
-
             </div>
         )
     }

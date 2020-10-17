@@ -32,7 +32,7 @@ export default class AddUser extends Component {
     render() {
         return (
             <Fragment>
-                <Form formTitle="Add User" buttonTitle="Submit" onChange={this.onChange} onClick={this.createUser}/>
+                <Form formTitle="Add User" buttonTitle="Submit" value="" onChange={this.onChange} onClick={this.createUser}/>
            </Fragment>
         )
     }
