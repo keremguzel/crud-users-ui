@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import Input from "./Input"
 import {getUserById,updateUser} from "../api/UserService"
 
@@ -46,9 +46,9 @@ export default class UpdateUser extends Component {
             <div className="user-form">
         <form className="ui form">
             <h1 style={{textAlign:"center"}}>Update User</h1>
-            <Input label="First Name" type="text" value={this.state.userName} name="userName" placeholder="First Name" onChange={this.onChange}/>
-            <Input label="Last Name" type="text" value={this.state.userSurname} name="userSurname" placeholder="Last Name" onChange={this.onChange}/>
-            <Input label="E-mail" type="text" value={this.state.userEmail} name="userEmail" placeholder="E-mail" onChange={this.onChange}/>
+            <Input className="field" label="First Name" type="text" value={this.state.userName} name="userName" placeholder="First Name" onChange={this.onChange}/>
+            <Input className="field" label="Last Name" type="text" value={this.state.userSurname} name="userSurname" placeholder="Last Name" onChange={this.onChange}/>
+            <Input className="field" label="E-mail" type="text" value={this.state.userEmail} name="userEmail" placeholder="E-mail" onChange={this.onChange}/>
            
             <div className="buttons">
                 <button className="ui button" type="submit" onClick={this.updateUser}>Submit</button>
