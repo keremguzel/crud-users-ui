@@ -55,18 +55,9 @@ export default class AddUser extends Component {
             <div className="user-form">
                 <form className="ui form error">
                     <h1 style={{textAlign:"center"}}>Add User</h1>
-                    <Input className= {this.state.errors.username ? "field error" : "field"} label="First Name" type="text" name="userName" placeholder="First Name" onChange={this.onChange}/>
-                    <div className="error-message" style={{fontSize:"10px",textAlign:"left",color:"red",marginTop:"-10px"}}>
-                        {this.state.errors.username}
-                    </div> 
-                    <Input className={this.state.errors.usersurname ? "field error" : "field"} label="Last Name" type="text" name="userSurname" placeholder="Last Name" onChange={this.onChange}/>
-                    <div className="error-message" style={{fontSize:"10px",textAlign:"left",color:"red",marginTop:"-10px"}}>
-                        {this.state.errors.usersurname}
-                    </div> 
-                    <Input className={this.state.errors.useremail ? "field error" : "field"} label="E-mail" type="text" name="userEmail" placeholder="E-mail" onChange={this.onChange}/>
-                    <div className="error-message" style={{fontSize:"10px",textAlign:"left",color:"red",marginTop:"-10px"}}>
-                        {this.state.errors.useremail}
-                    </div> 
+                    <Input className= {this.state.errors.username ? "field error" : "field"} errors = {this.state.errors.username} label="First Name" type="text" name="userName" placeholder="First Name" onChange={this.onChange}/>
+                    <Input className={this.state.errors.usersurname ? "field error" : "field"} errors = {this.state.errors.usersurname} label="Last Name" type="text" name="userSurname" placeholder="Last Name" onChange={this.onChange}/>
+                    <Input className={this.state.errors.useremail ? "field error" : "field"} errors = {this.state.errors.useremail} label="E-mail" type="text" name="userEmail" placeholder="E-mail" onChange={this.onChange}/>
 
                     <div className="buttons">
                         <button className="ui button" type="submit" onClick={this.createUser}>Submit</button>
