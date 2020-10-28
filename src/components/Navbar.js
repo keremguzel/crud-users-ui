@@ -9,7 +9,7 @@ export default function(props) {
        
         <div className="navbar">
             <div>
-            <p>USER MANAGEMENT</p>
+            <Link to="/"><p>USER MANAGEMENT</p></Link>
             </div>
             <div>
                 <Link to="/">Home</Link>
