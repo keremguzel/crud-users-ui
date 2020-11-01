@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import Input from "./Input"
 import {login} from "../api/UserService"
+import {connect} from "react-redux"
+import {loginSuccess} from "../redux/authActions"
 
-export default class Login extends Component {
+class Login extends Component {
 
     state = {
         username:null,
@@ -36,6 +38,14 @@ export default class Login extends Component {
         })
         try{
             await login(credentials)
+            this.props.history.push("/")
+
+            const authState = {
+                username: this.state.username,
+                password: this.state.password
+            }
+
+            this.props.onLoginSuccess(authState)
         }
         catch(error){
             this.setState({
@@ -70,3 +80,21 @@ export default class Login extends Component {
         )
     }
 }
+
+// const mapStateToProps = (store) => {
+//     return {
+//         isLoggedIn:store.isLoggedIn,
+//         username: store.username
+//     }
+// } 
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onLoginSuccess: (authState) => {
+            return dispatch(loginSuccess(authState))
+        }
+    }
+}
+
+
+export default connect(null, mapDispatchToProps)(Login)

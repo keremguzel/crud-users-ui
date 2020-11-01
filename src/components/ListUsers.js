@@ -1,18 +1,21 @@
 import React, { Component } from 'react'
 import {getUsers,deleteUser} from '../api/UserService'
 import {Link} from "react-router-dom"
+import {connect} from "react-redux"
 
-export default class ListUsers extends Component {
+class ListUsers extends Component {
 
     state = {
-        users: []
+        users: [],
+        pending: true
     }
 
 
     componentDidMount(){
         getUsers().then(response => {
             this.setState({
-                users: response.data
+                users: response.data,
+                pending:false
             })
         })
     }
@@ -34,8 +37,12 @@ export default class ListUsers extends Component {
     }
 
     render() {
+
+        const {isLoggedIn} = this.props
+
         return (
-            <div>
+           
+            <div className={this.state.pending && "ui loading form"}>
                 <table className="ui inverted blue table">
             <thead>
                 <tr>
@@ -53,9 +60,9 @@ export default class ListUsers extends Component {
                             <td style={{textAlign:"center"}}>{user.userSurname}</td>
                             <td style={{textAlign:"center"}}>{user.userEmail}</td>
                             <div className="buttons">
-                                <button className="ui inverted blue button" onClick={() => this.updateUser(user.userId)}>Edit</button>
+                                <button className="ui inverted blue button" disabled={!isLoggedIn} onClick={() => this.updateUser(user.userId)}>Edit</button>
                                 <button class="ui inverted olive button" onClick={() => this.viewUser(user.userId)}>View</button>
-                                <button className="ui inverted red button" onClick={() => this.deleteUser(user.userId)}>Delete</button>
+                                <button className="ui inverted red button" disabled={!isLoggedIn} onClick={() => this.deleteUser(user.userId)}>Delete</button>
                             </div>
                         </tr>
                     )}
@@ -65,3 +72,11 @@ export default class ListUsers extends Component {
         )
     }
 }
+
+const mapStateToProps = (store) => {
+    return {
+        isLoggedIn: store.isLoggedIn
+    }
+}
+
+export default connect(mapStateToProps)(ListUsers)

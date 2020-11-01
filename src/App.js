@@ -22,6 +22,7 @@ function App() {
               <Route exact path="/edit-user/:id" component={UpdateUser}/>
               <Route exact path="/view-user/:id" component={ViewUser}/>
               <Route exact path="/login" component={Login}/>
+              <Route exact path="/logout" component={ListUsers}/>
           </div>
       </Router>
       
