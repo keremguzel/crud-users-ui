@@ -38,12 +38,13 @@ export default class AddUser extends Component {
 
     }
 
+
     createUser = async (e) => {
         e.preventDefault(); 
         const user = {userName: this.state.userName, userSurname: this.state.userSurname, userEmail: this.state.userEmail, userGender: this.state.userGender}
 
             try{
-                const response = await addUser(user)
+                await addUser(user)
                 this.props.history.push("/")
             }catch(error){
                 this.setState({
@@ -56,7 +57,7 @@ export default class AddUser extends Component {
     }
 
     render() {
- 
+  
         return (
             <div className="user-form">
                 <form className="ui form error">

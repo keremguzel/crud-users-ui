@@ -6,6 +6,7 @@ import {BrowserRouter as Router,Route} from "react-router-dom"
 import AddUser from './components/AddUser';
 import UpdateUser from "./components/UpdateUser"
 import ViewUser from './components/ViewUser';
+import Login from "./components/Login"
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
               <Route exact path="/add-user" component={AddUser}/>
               <Route exact path="/edit-user/:id" component={UpdateUser}/>
               <Route exact path="/view-user/:id" component={ViewUser}/>
-
+              <Route exact path="/login" component={Login}/>
           </div>
       </Router>
       

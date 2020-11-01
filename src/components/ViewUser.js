@@ -22,7 +22,7 @@ export default class ViewUser extends Component {
             })
 
         }
-            
+
     )
 }
 

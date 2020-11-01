@@ -13,7 +13,8 @@ export default function(props) {
             </div>
             <div>
                 <Link to="/">Home</Link>
-                <Link to="/add-user">Add User<i className="fas fa-user-plus" style={{marginLeft:"5px"}}/></Link>            
+                <Link to="/add-user">Add User<i className="fas fa-user-plus" style={{marginLeft:"5px"}}/></Link>    
+                <Link to="/login">Login<i className="fas fa-sign-in-alt" style={{marginLeft:"5px"}}/></Link>          
             </div>
             
         </div>
